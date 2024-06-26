@@ -1,26 +1,13 @@
 {
   "baseBranches": ["main"],
-  "rebaseWhen": "conflicted",
+  "configMigration": true,
+  "extends": ["config:best-practices"],
   "labels": ["dependencies"],
   "packageRules": [
     {
-      "matchManagers": ["dockerfile"],
-      "matchPackagePatterns": ["alpine"],
-      "separateMinorPatch": true
-    },
-    {
-      "matchManagers": ["dockerfile"],
-      "matchPackagePatterns": ["alpine"],
-      "matchUpdateTypes": ["patch"],
-      "automerge": true,
-      "schedule": ["every tuesday after 4am and before 8am"]
-    },
-    {
-      "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true,
-      "pinDigests": true,
-      "schedule": ["every tuesday after 4am and before 8am"]
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
     }
-  ]
+  ],
+  "rebaseWhen": "conflicted"
 }

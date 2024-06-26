@@ -1,14 +1,13 @@
 {
   "baseBranches": ["main"],
-  "rebaseWhen": "conflicted",
+  "configMigration": true,
+  "extends": ["config:best-practices"],
   "labels": ["dependencies"],
   "packageRules": [
     {
-      "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true,
-      "pinDigests": true,
-      "schedule": ["after 4am and before 8am every tuesday"]
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
     }
-  ]
+  ],
+  "rebaseWhen": "conflicted"
 }
