@@ -36,13 +36,13 @@ jobs:
     steps:
       - name: Generate a token
         id: generate-token
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@31c86eb3b33c9b601a1f60f98dcbfd1d70f379b4 # v1
         with:
           app-id: ${{ secrets.GH_GARDENER_APP_ID }}
           private-key: ${{ secrets.GH_GARDENER_PRIVATE_KEY }}
 
       - name: Checkout
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
       - name: Validate Renovate JSON
         run: jq type .github/renovate.json
@@ -55,7 +55,7 @@ jobs:
           RENOVATE_ONBOARDING: "false"
           RENOVATE_PLATFORM_COMMIT: 'true'
           RENOVATE_REPOSITORIES: ${{ github.repository }}
-        uses: renovatebot/github-action@v40.1.12
+        uses: renovatebot/github-action@21d88b0bf0183abcee15f990011cca090dfc47dd # v40.1.12
         with:
           configurationFile: .github/renovate.json
           token: '${{ steps.generate-token.outputs.token }}'
